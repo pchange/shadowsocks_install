@@ -39,6 +39,8 @@ function checkos(){
         OS='Debian'
     elif [ ! -z "`cat /etc/issue | grep Ubuntu`" ];then
         OS='Ubuntu'
+    elif [ ! -z "`cat /etc/issue | grep Linaro`" ];then
+        OS='Ubuntu'
     else
         echo "Not support OS, Please reinstall OS and retry!"
         exit 1
@@ -49,9 +51,9 @@ function checkos(){
 function getversion(){
     if [[ -s /etc/redhat-release ]];then
         grep -oE  "[0-9.]+" /etc/redhat-release
-    else    
+    else
         grep -oE  "[0-9.]+" /etc/issue
-    fi    
+    fi
 }
 
 # CentOS version
@@ -63,7 +65,7 @@ function centosversion(){
         return 0
     else
         return 1
-    fi        
+    fi
 }
 
 # Disable selinux
@@ -336,7 +338,6 @@ function install_shadowsocks(){
     fi
 	check_datetime
     install_cleanup
-	
 }
 
 # Initialization step
